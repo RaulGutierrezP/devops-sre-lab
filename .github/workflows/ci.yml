@@ -8,6 +8,11 @@ on:
   push:
     branches:
       - develop
+
+permissions:
+  contents: read
+  packages: write
+
 jobs:
   ci:
     name: Validación básica
@@ -26,5 +31,16 @@ jobs:
         run: |
           find . -name "*.md" -type f -print
 
-      - name: Build Docker image
-        run: docker build -t devops-sre-lab:ci .
+      - name: Iniciar sesión en GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build y publicar imagen Docker
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          tags: ghcr.io/raulgutierrezp/devops-sre-lab:latest
