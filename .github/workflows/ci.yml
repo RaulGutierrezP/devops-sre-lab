@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  pull_request:
+    branches:
+      - develop
+  push:
+    branches:
+      - develop
+
+jobs:
+  ci:
+    name: Validación básica
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+
+      - name: Comprobar estructura
+        run: |
+          test -f README.md
+          test -d .github/workflows
+
+      - name: Validar archivos Markdown
+        run: |
+          find . -name "*.md" -type f -print
