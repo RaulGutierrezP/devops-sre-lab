@@ -1,0 +1,9 @@
+application:
+  name: devops-sre-lab
+
+container:
+  image: ghcr.io/raulgutierrezp/devops-sre-lab
+  tag: latest
+  port: 8080
+
+replicas: 1
