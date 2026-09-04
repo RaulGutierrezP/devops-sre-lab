@@ -25,3 +25,6 @@ jobs:
       - name: Validar archivos Markdown
         run: |
           find . -name "*.md" -type f -print
+
+      - name: Build Docker image
+        run: docker build -t devops-sre-lab:ci .
