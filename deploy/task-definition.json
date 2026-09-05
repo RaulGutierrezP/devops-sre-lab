@@ -1,0 +1,21 @@
+{
+  "family": "devops-sre-lab",
+  "networkMode": "bridge",
+  "requiresCompatibilities": ["EC2"],
+  "cpu": "256",
+  "memory": "512",
+  "containerDefinitions": [
+    {
+      "name": "devops-sre-lab",
+      "image": "ghcr.io/raulgutierrezp/devops-sre-lab:latest",
+      "essential": true,
+      "portMappings": [
+        {
+          "containerPort": 8080,
+          "hostPort": 8080,
+          "protocol": "tcp"
+        }
+      ]
+    }
+  ]
+}
