@@ -3,7 +3,7 @@ application:
 
 container:
   image: ghcr.io/raulgutierrezp/devops-sre-lab
-  tag: latest
+  tag: "${IMAGE_TAG}"
   port: 8080
 
 replicas: 1
